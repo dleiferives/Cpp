@@ -1,0 +1,20 @@
+Ok so this is one of those simple ass ones right, so we want and input 
+
+out << how long do you want your result?
+in >> len
+
+int seed;
+int m = some shit.
+int a = Chungus number (could use pi for fun?);
+int b = less chungo number;
+out << we want seed
+in >> seed
+
+int random_number_seed
+
+random_number_seed = (( seed * a ) + b ) % m 
+
+seed = random_number_seed
+
+
+and then from there we can do more stuff I think
