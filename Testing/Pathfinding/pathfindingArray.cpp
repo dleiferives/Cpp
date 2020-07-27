@@ -83,225 +83,43 @@ int main() {
 				}
 				else
 				{
-					if (grid1[(chaserX+1)][(chaserY)] != 'B'){ 
-							moveRight();
-					}
-					else
-					{
-						if (grid1[chaserX][(chaserY+1)] != 'B'){
-						moveUp();
-						}
-						else
-						{
-							if (grid1[(chaserX-1)][(chaserY)] != 'B'){
-							       moveLeft();
-							}
-							else
-							{
-								if (grid1[(chaserX)][(chaserY-1)] != 'B'){ 
-								moveDown();
-								}
-								else
-								{
-									std::cout << "fucking stuck \n";
-									break;
-								}
-							}
-						}
-					}
-
+					moveRight();	
 				}
 			}
 			else
 			{
-				if (disUP < disLeft){
-					if (grid1[chaserX][(chaserY+1)] != 'B'){
-						moveUp();
-					}
-					else
-					{
-						if (grid1[(chaserX-1)][(chaserY)] != 'B'){
-							moveLeft();
-						}
-						else
-						{
-							if (grid1[(chaserX+1)][(chaserY)] != 'B'){ 
-								moveRight();
-							}
-							else
-							{
-								if (grid1[(chaserX)][(chaserY-1)] != 'B'){ 
-									moveDown();
-								}
-								else
-								{
-									std::cout << "fucking stuck \n";
-									break;
-								}
-							}
-						}
-					}
+				if (disUp < disLeft ) {
+					moveUp();
 				}
 				else
 				{
-					if (grid1[(chaserX-1)][(chaserY)] != 'B'){
-						moveLeft();
-					}
-					else
-					{
-						if (grid1[(chaserX+1)][(chaserY)] != 'B'){ 
-							moveRight();
-						}
-						else
-						{
-							if (grid1[chaserX][(chaserY+1)] != 'B'){
-								moveUp();
-							}
-							else
-							{
-								if (grid1[(chaserX)][(chaserY-1)] != 'B'){ 
-									moveDown();
-								}
-								else
-								{
-									std::cout << "fucking stuck \n";
-									break;
-								}
-							}
-						}
-					}
+					moveLeft();
 				}
 			}
 		}
 		else
 		{
-			if(disRight < disLeft) {
-				if (disDown < disRight){
-					if (grid1[(chaserX)][(chaserY-1)] != 'B'){ 
-						moveDown();
-					}
-					else
-					{
-						if (grid1[(chaserX+1)][(chaserY)] != 'B'){ 
-							moveRight();
-						}
-						else
-						{
-							if (grid1[(chaserX-1)][(chaserY)] != 'B'){
-								moveLeft();
-							}
-							else
-							{
-								if (grid1[chaserX][(chaserY+1)] != 'B'){
-									moveUp();
-								}
-
-								else
-								{
-									std::cout << "fucking stuck \n";
-									break;
-								}
-							}
-						}
-					}
+			if (disRight < disLeft) {
+				if (disDown < disRight) {
+					moveDown();	
 				}
 				else
 				{
-					
-					if (grid1[(chaserX+1)][(chaserY)] != 'B'){ 
-						moveRight();
-					}
-					else
-					{
-						if (grid1[(chaserX)][(chaserY-1)] != 'B'){ 
-							moveDown();
-						}
-						else
-						{
-							if (grid1[(chaserX-1)][(chaserY)] != 'B'){
-								moveLeft();
-							}
-							else
-							{
-								if (grid1[chaserX][(chaserY+1)] != 'B'){
-									moveUp();
-								}
-
-								else
-								{
-									std::cout << "fucking stuck \n";
-									break;
-								}
-							}
-						}
-					}
-
+					moveRight();
 				}
 			}
 			else
 			{
-				if (disDown < disLeft){
-					if (grid1[(chaserX)][(chaserY-1)] != 'B'){ 
-						moveDown();
-					}
-					else
-					{
-						if (grid1[(chaserX-1)][(chaserY)] != 'B'){
-							moveLeft();
-						}
-						else
-						{
-							if (grid1[(chaserX+1)][(chaserY)] != 'B'){ 
-								moveRight();
-							}
-							else
-							{
-								if (grid1[chaserX][(chaserY+1)] != 'B'){
-									moveUp();
-								}
-
-								else
-								{
-									std::cout << "fucking stuck \n";
-									break;
-								}
-							}
-						}
-					}
+				if (disDown < disLeft) {
+					moveDown();	
 				}
 				else
 				{
-					if (grid1[(chaserX-1)][(chaserY)] != 'B'){
-						moveLeft();
-					}
-					else
-					{
-						if (grid1[(chaserX)][(chaserY-1)] != 'B'){ 
-							moveDown();
-						}
-						else
-						{
-							if (grid1[(chaserX+1)][(chaserY)] != 'B'){ 
-								moveRight();
-							}
-							else
-							{
-								if (grid1[chaserX][(chaserY+1)] != 'B'){
-									moveUp();
-								}
-
-								else
-								{
-									std::cout << "fucking stuck \n";
-									break;
-								}
-							}
-						}
-					}
+					moveLeft();
 				}
 			}
 		}
-
+	}
 	if (chaserX == targetX){
 		if (chaserY == targetY){
 			break;
@@ -354,45 +172,3 @@ void moveLeft() {
 	chaserX -= 1;
 	grid1[chaserXOld][chaserY] = '*';
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
