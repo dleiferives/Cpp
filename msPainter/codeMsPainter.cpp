@@ -34,7 +34,7 @@ int windowy = 8;
  
  //Getting paints Hwnd
  
- HWND fuck_me_baby = FindWindowW(NULL,L"Untitled - Paint");
+ HWND fuck_me_baby = FindWindowW(NULL,L"Untitled - Paint"); 
  //Rectangle that gets filled with the position of the window on the screen. 
  RECT cum_in_calliou;
  
@@ -69,6 +69,11 @@ pos drawBotRight;
 
 
 int main(){	
+	//ensuring that paint is indeed open
+	if (fuck_me_baby == 0 ) { 
+		system("C:\\Windows\\System32\\mspaint.exe");
+		fuck_me_baby = FindWindowW(NULL,L"Untitled - Paint");
+	}
 	//Getting msPaint window Size
 	GetWindowRect(fuck_me_baby, &cum_in_calliou);
 	//Pushing window size into the pos paintTopLeft and paintBotRight
