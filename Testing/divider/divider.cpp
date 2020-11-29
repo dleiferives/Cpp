@@ -12,15 +12,21 @@ int cols;
 
 int main(int argc, char * argv[])
 {
-	
 	cv::String init_image;
-	if( argc >= 3)
+	if( argc == 2)
 	{
 			init_image = argv[1];
-			cols = std::stoi(argv[2]);
-			rows = std::stoi(argv[3]);
 	}
-	std::cout << rows * cols << "\n"; 
+	else{
+		std::cout << "error, include the name of the file after the exe file. example: run_me_in_cmd.exe test.png";
+		return 0;
+	}
+	std::cout << "number of columns(x):  ";
+	std::cin >> cols;
+	std::cout << "number of rows(y):  ";
+	std::cin >> rows;
+	
+	std::cout << "number of sub images: " << rows * cols << "\n"; 
 	cv::Mat img = cv::imread(init_image);
 	
 	int xWidth = img.cols / cols;
