@@ -1,0 +1,9 @@
+#include <opencv2/core/core.hpp>
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+int main(){
+  	cv::Mat testImage =  cv::Mat::zeros(cv::Size(100,100), CV_64FC1);
+	namedWindow("thanos", cv::WINDOW_AUTOSIZE);
+	return 0;
+}

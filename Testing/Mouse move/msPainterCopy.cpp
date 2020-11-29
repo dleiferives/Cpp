@@ -8,10 +8,10 @@
 	int speed = 4;
 	int scale = 1;
 
-	int xScale = 800;
-	int yScale = 570;
+	int xScale = 819;
+	int yScale = 505;
 	int k = 5;
-	int waterColorxk = 10;
+	int waterColorxk = 30;
 	int waterColoryk = k;
 	int shift=15;
 	int ratio = 1;
@@ -48,7 +48,7 @@ int main(){
     	//waterColor();
     	//printerMan();
     	//sprayPaintFiller();
-	squareBoy();	
+	   squareBoy();	
 		
 	}
         if(GetAsyncKeyState(VK_ESCAPE))
@@ -65,17 +65,17 @@ void toDropper(){
 	Sleep(4);
 	SetCursorPos(265,90);
 	Sleep(5);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
 	Sleep(5);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(2);
 }
 
 void toPencil(){
 
 	SetCursorPos(245,75);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(6);
 
 }
@@ -99,14 +99,14 @@ void sprayPaintFiller(){
 			//sleeps the speed variable declared at the start
 			Sleep(speed+2);
 
-			mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-			mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+			mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+			mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 
 			// this section is the same as the last but it should just copy over the stuff, lets see if it works?
 				SetCursorPos((tempx+((xScale)*scale))+shift,tempy);
 				Sleep(speed);
 
-				mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
 
 						Sleep(speed);
 
@@ -114,12 +114,12 @@ void sprayPaintFiller(){
 				Sleep(speed);
 				
 
-				mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 
 				for (int i =0; i<30; i++){
 				tempRandX = rand() % 10 + -2;
 			 	tempRandY = rand() % 10 + -2;
-										mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
+										mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
 
 						Sleep(speed-1);
 
@@ -127,7 +127,7 @@ void sprayPaintFiller(){
 				Sleep(speed-1);
 				
 
-				mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 
 					Sleep(3);
 			}
@@ -159,26 +159,26 @@ void squareBoy() {
 				{ 
 				toDropper();
 				SetCursorPos(tempx,tempy);
-				mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-				mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 				}
 				// Draws the square
 				Sleep(speed+2);
 				SetCursorPos((tempx+((xScale)*scale))+shift,tempy);
 				Sleep(2);
-				mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-				mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 				SetCursorPos((tempx+((xScale)*scale))+shift,tempy-1);
 				Sleep(2);
-				mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-				mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 				SetCursorPos((tempx+((xScale)*scale))+shift+1,tempy-1);
 				Sleep(2);
-				mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-				mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 				SetCursorPos((tempx+((xScale)*scale))+shift+1,tempy);
 				Sleep(2);
-				mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 				Sleep(2);	
 
 				if(GetAsyncKeyState(VK_ESCAPE))
@@ -211,8 +211,8 @@ void printerMan(){
 					int tempx = 5+(x*scale);
 					int tempy = 144+(y*scale);
 					SetCursorPos(tempx,tempy);
-					mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-					mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+					mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+					mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 					if(GetAsyncKeyState(VK_ESCAPE))
 		    		{
 		    			break;
@@ -245,11 +245,15 @@ void waterColor(){
 			int preTempx = 5+(i*scale);
 			int preTempy =144+(j*scale);
 			
-			int tempx = preTempx + (rand() % 30 - 15);
-			int tempy = preTempy + (rand() % 20 - 10);
+			int tempx = preTempx + (rand() % 100 - 50);
+			int tempy = preTempy + (rand() % 60 - 30);
 			int tempRandX = rand() % 40 + -2;
 			int tempRandY = rand() % 40 + -2;
 			
+			if (tempx >= (xScale + 5)){ tempx = (xScale+5);}
+			if (tempx <= (6)){ tempx = (6);}
+			if (tempx >= (yScale + 146)){ tempx = (yScale+146);}
+			if (tempy <= (146)){ tempx = (146);}
 
 			toDropper();
 			SetCursorPos(tempx,tempy);
@@ -257,14 +261,14 @@ void waterColor(){
 			//sleeps the speed variable declared at the start
 			Sleep(speed+2);
 
-			mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-			mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+			mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+			mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 
 			// this section is the same as the last but it should just copy over the stuff, lets see if it works?
 				SetCursorPos((tempx+((xScale)*scale))+shift,tempy);
 				Sleep(speed);
 
-				mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
 
 						Sleep(speed);
 
@@ -272,20 +276,20 @@ void waterColor(){
 				Sleep(speed);
 				
 
-				mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 
-				for (int i =0; i<10; i++){
+				for (int i =0; i<1; i++){
 				tempRandX = rand() % 40 + -2;
-										mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
+										mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
 			 	tempRandY = rand() % 40 + -2;
 
-						Sleep(speed);
+						Sleep(speed+100);
 
 				SetCursorPos(tempRandX+(tempx+((xScale)*scale))+shift,tempy+tempRandY);
 				Sleep(speed);
 				
 
-				mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+				mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 
 					Sleep(4);
 					if(GetAsyncKeyState(VK_ESCAPE))
@@ -313,20 +317,20 @@ void waterColor(){
 void toCalygOne(){
 
 	SetCursorPos(330,100);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(26);
 	SetCursorPos(250,135);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(26);
 	SetCursorPos(250,135);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(26);
 	SetCursorPos(0,1024);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(26);
 
 }
@@ -334,20 +338,20 @@ void toCalygOne(){
 void toCalgTwo(){
 	Sleep(26);
 	SetCursorPos(330,100);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(21);	
 	SetCursorPos(300,135);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(26);
 		SetCursorPos(300,135);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(26);
 	SetCursorPos(0,1024);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(26);
 
 
@@ -356,19 +360,19 @@ void toCalgTwo(){
 void toSprayPaint(){
 	Sleep(20);
 	SetCursorPos(330,100);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(21);
 	SetCursorPos(340,135);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(26);
 	SetCursorPos(340,135);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(26);
 	SetCursorPos(0,1024);
-	mouse_event(MOUSEEVENTF_LEFTDOWN,200,200,0,0);
-	mouse_event(MOUSEEVENTF_LEFTUP,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTDOWN,200,200,0,0);
+	mouse_event(MOUSEEVENTF_RIGHTUP,200,200,0,0);
 	Sleep(26);
 }
