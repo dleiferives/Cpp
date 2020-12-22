@@ -81,25 +81,35 @@ void fill_vp_line(vp_line & line, point vp1, point vp2)
 	find_y_intercept(line);
 }
 
+
+
+
+
+
 int main()
 {
 	printf("Cheks if three points lie on the same line.\n");
-	point p1, p2, p3, p4;
+	point p1, p2, p3, p4, p5, p6, p7, p8;
 	fill_point(p1);
 	fill_point(p2);
 	fill_point(p3);
 	fill_point(p4);
-
+	fill_point(p5);
+	fill_point(p6);
+	fill_point(p7);
+	fill_point(p8);	
 
 	
 	//creating the line that we will be checking.
 	
-	vp_line vp1_line1, vp1_line2, vp2_line1, vp2_line2;
+	vp_line vp1_line1, vp1_line2, vp2_line1, vp2_line2, vp3_line1, vp3_line2;
 	fill_vp_line(vp1_line1, p1, p2);
 	fill_vp_line(vp1_line2, p3, p4);	
 	fill_vp_line(vp2_line1, p1, p3);
 	fill_vp_line(vp2_line2, p2, p4);
-	
+	fill_vp_line(vp3_line1, p2, p5);
+	fill_vp_line(vp3_line2, p3, p6);
+
 	printf(" m = %f ", vp1_line1.m);
 	printf(" b = %f \n",vp1_line1.intercept.y);
 
@@ -130,3 +140,39 @@ int main()
 	return 0;
 }
 	
+void error_check()
+{
+	//create vp 1
+		fill_vp_line(vp1_line1, p1, p2);
+		fill_vp_line(vp1_line2, p3, p4);	
+		find_vp(vp_1, vp1_line1, vp1_line2);
+	
+	//check within bounds
+		if (((vp1_line1.x >= vp_1.x) && (vp1_line2.x <= vp_1.x)) || ((vp1_line1.x <= vp_1.x) && (vp1_line2.x >= vp_1.x)))
+		{
+		//if within bounds create new vp
+			fill_vp_line(vp1_line1, p1, p4);
+			fill_vp_line(vp1_line2, p3, p2);	
+			find_vp(vp_1, vp1_line1, vp1_line2);
+		}
+	//if not continue
+	
+	//create vp 2
+		fill_vp_line(vp2_line1, p1, p3);
+		fill_vp_line(vp2_line2, p2, p4);	
+		find_vp(vp_2, vp2_line1, vp2_line2);
+	
+	//check within bounds
+		if (((vp2_line1.x >= vp_2.x) && (vp2_line2.x <= vp_2.x)) || ((vp2_line1.x <= vp_2.x) && (vp2_line2.x >= vp_2.x)))
+		{
+		//if within bounds create new vp
+			fill_vp_line(vp1_line1, p1, p4);
+			fill_vp_line(vp1_line2, p3, p2);	
+			find_vp(vp_1, vp1_line1, vp1_line2);
+		}
+}
+ 
+
+
+
+
