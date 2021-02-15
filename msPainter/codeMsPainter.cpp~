@@ -176,10 +176,8 @@ void random_draw( pos dropper, pos range, pos dTL, pos dBR, int iterations, bool
 			{
 				clickMouse(1);
 				rand_pos1.x += rand_in_range(30,-15); rand_pos1.y += rand_in_range(30,-15);
-				restrict_number(dBR,rand_pos1);
 				moveMouse(rand_pos1);
 				rand_pos1.x += rand_in_range(30,-15); rand_pos1.y += rand_in_range(30,-15);
-				restrict_number(dBR,rand_pos1);
 				moveMouse(rand_pos1);
 				Sleep(3);
 				clickMouse(4);
