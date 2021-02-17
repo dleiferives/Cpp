@@ -46,10 +46,19 @@ struct pos {
 	int x;
 	int y;
 };
+
+//####Variables#####
+
 pos paintTopLeft;
 pos paintBotRight;
 pos drawTopLeft;
 pos drawBotRight;
+pos mid_top;
+pos mid_bot;
+pos range;
+pos dropper;
+
+
 /* ### functions ### */
 
 	// moves mouse to the position indicated.0
@@ -82,8 +91,9 @@ pos drawBotRight;
 	
 	void random_draw( pos dropper, pos range, pos dTL, pos dBR, int iterations, bool further_rand=false);
 
-int main(){	
-	srand (time(NULL));
+void update()
+{
+
 	//ensuring that paint is indeed open
 	if (fuck_me_baby == 0 ) { 
 		system("C:\\Windows\\System32\\mspaint.exe");
@@ -100,14 +110,19 @@ int main(){
 	drawTopLeft.x = paintTopLeft.x + 5 + windowx; drawTopLeft.y = paintTopLeft.y + 144 + windowy;
 	drawBotRight.x = paintBotRight.x - 30; drawBotRight.y = paintBotRight.y - 55;
         
-	pos mid_top = {(drawTopLeft.x + ((drawBotRight.x - drawTopLeft.x) / 2)),drawTopLeft.y};
-	pos mid_bot = {mid_top.x, drawBotRight.y};	
-	pos range = {mid_top.x - drawTopLeft.x, drawBotRight.y-drawTopLeft.y};
+	mid_top = {(drawTopLeft.x + ((drawBotRight.x - drawTopLeft.x) / 2)),drawTopLeft.y};
+	mid_bot = {mid_top.x, drawBotRight.y};	
+	range = {mid_top.x - drawTopLeft.x, drawBotRight.y-drawTopLeft.y};
 
 	pos dropper = {cum_in_calliou.left+120,cum_in_calliou.top+10};
-	random_draw(dropper,range,drawTopLeft,drawBotRight,3000,true);
+}
+int main(){	
+	srand (time(NULL));
 	
-	random_draw(dropper,range,drawTopLeft,drawBotRight,10000);
+	update();
+	random_draw(dropper,range,drawTopLeft,drawBotRight,300000,true);
+	
+	random_draw(dropper,range,drawTopLeft,drawBotRight,100000);
 	
 
 	if (true){
@@ -135,10 +150,12 @@ int rand_in_range(int dist, int start = 0)
 	int result = start+(rand() % dist);
 	return result;
 }
-void restrict_number(pos dBR, pos &number)
+void restrict_number(pos dBR, pos dTL ,pos &number)
 {
 		if( number.x > (dBR.x-10)){number.x = dBR.x;}
 		if( number.y > (dBR.y-10)){number.y = dBR.y;}
+		if( number.x < (dTL.x + 5)){number.x = dTL.x;}
+		if( number.y < (dTL.y + 5)) {number.y = dTL.y;}
 }
 void random_draw( pos dropper, pos range, pos dTL, pos dBR, int iterations, bool further_rand)
 {
@@ -147,16 +164,20 @@ void random_draw( pos dropper, pos range, pos dTL, pos dBR, int iterations, bool
 	std::cout << "### Random Begin ### \n";
 	for(int i =0; i< iterations; i++)
 	{
+		update();
 		pos rand_pos1 = rand_pos(range,drawTopLeft); // getting the random position
 		moveMouse(dropper);
 		clickMouse(3,20);
 		
 		moveMouse(rand_pos1); // copying the color therre
+		restrict_number(dBR,dTL,rand_pos1);
 		clickMouse(3,20);	
 
 
 		rand_pos1.x += (range.x + dTL.x); // pasting color on other side
+		restrict_number(dBR,dTL,rand_pos1);
 		moveMouse(rand_pos1);
+
 		if (further_rand == false)
 		{
 			clickMouse(3,10);
@@ -165,27 +186,32 @@ void random_draw( pos dropper, pos range, pos dTL, pos dBR, int iterations, bool
 		{
 			clickMouse(1);
 			rand_pos1.x += rand_in_range(5); rand_pos1.y += rand_in_range(5);
-			restrict_number(dBR,rand_pos1);
+			restrict_number(dBR,dTL,rand_pos1);
 			moveMouse(rand_pos1);
 			Sleep(3);
 			rand_pos1.x += rand_in_range(30,-15); rand_pos1.y += rand_in_range(30,-15);
-			restrict_number(dBR,rand_pos1);
+			restrict_number(dBR,dTL,rand_pos1);
 			moveMouse(rand_pos1);
 			Sleep(3);
-			for(int i=0; i < rand_in_range(40); i++)
+			for(int i=0; i < rand_in_range(30); i++)
 			{
+				update();
 				clickMouse(1);
 				rand_pos1.x += rand_in_range(30,-15); rand_pos1.y += rand_in_range(30,-15);
+				restrict_number(dBR,dTL,rand_pos1);
 				moveMouse(rand_pos1);
 				rand_pos1.x += rand_in_range(30,-15); rand_pos1.y += rand_in_range(30,-15);
+				restrict_number(dBR,dTL,rand_pos1);
 				moveMouse(rand_pos1);
 				Sleep(3);
 				clickMouse(4);
 			}
 			rand_pos1.x += rand_in_range(30,-15); rand_pos1.y += rand_in_range(30,-15);
+				restrict_number(dBR,dTL,rand_pos1);
 			moveMouse(rand_pos1);
 			Sleep(3);
 			rand_pos1.x += rand_in_range(30,-15); rand_pos1.y += rand_in_range(30,-15);
+			restrict_number(dBR,dTL,rand_pos1);
 			moveMouse(rand_pos1);
 			Sleep(3);
 			clickMouse(4);	
